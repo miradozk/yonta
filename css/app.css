@@ -92,6 +92,11 @@ figcaption {
 .hide {
     display: none
 }
+
+a {
+    text-decoration: none;
+}
+
 /* = Containers
 ----------------------------------------------------------------------------- */
 
@@ -133,13 +138,12 @@ input[type="tel"],
 input[type="password"],
 input[type="number"],
 input[type="text"] {
+    padding: 10px 5px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px #ddd;
     border: 1px solid #ccc;
-    padding: 3px;
-    line-height: 15px;
-    width: 250px;
-    font-size: 99%;
-    margin-bottom: 10px;
-    margin-top: 5px;
+    line-height: 1.7
     -webkit-appearance: none;
 }
 
@@ -149,16 +153,25 @@ input[type="password"]:focus,
 input[type="number"]:focus,
 input[type="text"]:focus,
 textarea:focus {
-    color: #000;
-    border-color: rgba(82, 168, 236, 0.8);
+    color: #333;
+    border-color: #ef5350;
     outline: 0;
-    box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+    box-shadow: 0 0 8px #ef5350;
 }
 
 input[type="number"] {
     width: 40px;
 }
-
+select {
+    background-color: #fff;
+	padding: 10px 5px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-shadow: inset 0 1px 3px #ddd;
+	border-radius: 5px;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
 textarea {
     border: 1px solid #ccc;
     padding: 3px;
@@ -188,22 +201,32 @@ select {
 
 .form-actions {
     margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center
+}
+.form-actions a {
+    color: #ef5350;
+    margin: 0 10px;
+}
+.form-actions a:hover {
+    text-decoration: underline
 }
 
 input.form-error,
 textarea.form-error {
-    border: 2px solid #b94a48;
+    border: 2px solid #FFAB00;
 }
 
 .form-errors {
-    color: #b94a48;
+    color: #FFAB00;
     margin-left: 15px;
     list-style-type: none;
 }
 
 .form-help {
     font-size: 0.9em;
-    color: brown;
+    color:#FFAB00;
     margin-bottom: 15px;
 }
 
@@ -215,6 +238,33 @@ textarea.form-error {
 #search-opener,
 #search-form {
     float: right;
+}
+
+.btn {
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 1.7rem;
+    font-family: inherit;
+    margin: 0 10px;
+    cursor: pointer
+}
+.btn:focus,
+.btn:hover {
+	filter: alpha(opacity=90);
+	background-image: -webkit-linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
+    background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
+}
+.btn.btn-blue {
+    background-color: #0078e7;
+    color: #fff;    
+}
+.btn.btn-red{
+    background-color: #ef5350;
+    color: #FFF;
+}
+.btn.btn-red:hover {
+    text-decoration: none
 }
 
  /* = Menu
@@ -285,7 +335,8 @@ header nav a  span {
 
  /* = Page
 ----------------------------------------------------------------------------- */
-.page-header > h2 {
+.page-header > h2,
+.page-section > h2{
     font-size: 2.4rem;
     font-weight: normal;
     margin-bottom: 20px;
@@ -305,31 +356,37 @@ header nav a  span {
 #grouplist li + li {
     margin-right:  10px;
 }
-#grouplist li a {
+#grouplist li a,
+.feed-groups li a {
     font-size: 1.4rem;
     text-decoration: none;
     color: #7F7D7C;
     font-style: italic;
 }
 #grouplist li.active a,
-#grouplist li a:hover {
+#grouplist li a:hover,
+.feed-groups li a:hover,
+.feed-groups li.active a {
     color: #ef5350;
     text-decoration: underline;
 }
 
 .page-header > ul,
-[data-item-page="feeds"] nav ul {
+[data-item-page="feeds"] nav ul,
+[data-item-page="config"] nav ul {
     list-style-type: none;
     margin: 20px auto;
     display: flex;
     justify-content: flex-end;
 }
 .page-header > ul li,
-[data-item-page="feeds"] nav ul li {
+[data-item-page="feeds"] nav ul li,
+[data-item-page="config"] nav ul li {
     margin-right: 10px;
 }
 .page-header > ul a,
-[data-item-page="feeds"] nav a {
+[data-item-page="feeds"] nav a,
+[data-item-page="config"] nav a {
     text-decoration: none;
     color: #ef5350;
     font-weight: bold;
@@ -337,14 +394,17 @@ header nav a  span {
 }
 .page-header > ul a:hover,
 [data-item-page="feeds"] nav a:hover,
-[data-item-page="feeds"] nav .active a {
+[data-item-page="feeds"] nav .active a,
+[data-item-page="config"] nav a:hover,
+[data-item-page="config"] nav .active a {
     text-decoration: underline;
 }
 
  /* = Articles
 ----------------------------------------------------------------------------- */
 #listing article,
-[data-item-page="feeds"] article {
+[data-item-page="feeds"] article,
+.page form {
     background-color: #FFF;
     border-radius: 5px;
     padding: 5px 10px;
@@ -353,9 +413,7 @@ header nav a  span {
 #listing article .item-icons {
     display: none;
 }
-#listing article h2 {
 
-}
 #listing article .item-title {
     display: flex;    
 }
@@ -404,7 +462,8 @@ header nav a  span {
 
  /* = Single
 ----------------------------------------------------------------------------- */
-#current-item {
+#current-item,
+.panel {
     background-color: #FFF;
     border-radius: 5px;
     padding: 10px;
@@ -484,6 +543,106 @@ header nav a  span {
 }
 
 
+ /* = Subscriptions
+----------------------------------------------------------------------------- */
+.items article[data-feed-disabled] {
+    background-color: #E0E0E0;
+}
+.items article h2 {
+    font-size: 1.9rem;
+    font-weight: normal
+}
+
+.items article h2 .favicon {
+    max-height: 24px;
+    max-height: 24px;
+    vertical-align: middle;
+}
+.items article h2 a {
+    color: #333;
+}
+.items article h2.loading-icon a {
+    color: #9E9E9E;   
+}
+.items article .items-count {
+    font-weight: bold;
+}
+.items article .feed-last-checked,
+.items article .feed-parsing-error {
+    display: block;
+    font-size: 1.5rem;
+    color: #616161;
+}
+.items article .feed-parsing-error {
+    display: none;
+    color: #FFAB00;
+}
+.items article[data-feed-error="1"] .feed-parsing-error {
+    display: block;
+}
+.items article .feed-groups,
+.items article .item-menu {
+    margin-top: 10px;
+}
+.items article .item-menu a {    
+    color: #ef5350;
+}
+.items article .item-menu a:hover {
+    text-decoration: underline;
+    color: #333;
+}
+
+ /* = Edit feed
+----------------------------------------------------------------------------- */
+form label {
+    font-size: 1.5rem;
+}
+form label[for] {
+    font-weight: bold;
+}
+form > input {
+    margin-bottom: 20px;
+}
+form #grouplist {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+form #grouplist label {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+form #grouplist label input:checked + span {
+    color: #ef5350;
+}
+
+ /* = Alert
+----------------------------------------------------------------------------- */
+.alert {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.6rem;
+    margin: 15px 0;
+}
+.alert-success {
+    color: #FFF;
+    background-color: #009688;
+    border-color: #4DB6AC;    
+}
+.alert-error {
+    color: #333;
+    background-color: #FFAB00;
+    border-color: #FFE57F;
+}
+.alert-info {
+    color: #FFF;
+    background-color: #0078e7;
+    border-color: #E3F2FD;
+}
+
  /* = Help 
 ----------------------------------------------------------------------------- */
 #help-layer {
@@ -520,7 +679,22 @@ header nav a  span {
     cursor: pointer;
 }
 
-
+ /* = Panel
+----------------------------------------------------------------------------- */
+.panel {
+    margin-bottom: 20px;
+}
+.panel ul {
+    margin: 10px 20px;
+}
+.panel.panel-danger {
+    background-color: #ef5350;
+    color: #fff;
+}
+.panel.panel-danger a {
+    color: #FFF;
+    text-decoration: underline
+}
  /* = Media query
 ----------------------------------------------------------------------------- */
 
