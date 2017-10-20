@@ -296,7 +296,8 @@ header nav a  span {
 }
 
 #grouplist {
-    list-style-type: none
+    list-style-type: none;
+    margin-bottom: 20px;
 }
 #grouplist li {
     display: inline;
@@ -316,28 +317,34 @@ header nav a  span {
     text-decoration: underline;
 }
 
-.page-header > ul {
+.page-header > ul,
+[data-item-page="feeds"] nav ul {
     list-style-type: none;
     margin: 20px auto;
     display: flex;
     justify-content: flex-end;
 }
-.page-header > ul li {
+.page-header > ul li,
+[data-item-page="feeds"] nav ul li {
     margin-right: 10px;
 }
-.page-header > ul a {
+.page-header > ul a,
+[data-item-page="feeds"] nav a {
     text-decoration: none;
     color: #ef5350;
     font-weight: bold;
     font-size: 1.5rem;
 }
-.page-header > ul a:hover {
+.page-header > ul a:hover,
+[data-item-page="feeds"] nav a:hover,
+[data-item-page="feeds"] nav .active a {
     text-decoration: underline;
 }
 
  /* = Articles
 ----------------------------------------------------------------------------- */
-#listing article {
+#listing article,
+[data-item-page="feeds"] article {
     background-color: #FFF;
     border-radius: 5px;
     padding: 5px 10px;
@@ -355,6 +362,7 @@ header nav a  span {
 #listing article .favicon {
     width: 24px;
     margin-right: 10px;
+    max-height: 24px;
 }
 #listing article .item-title a {
     text-decoration: none;
@@ -362,14 +370,17 @@ header nav a  span {
     font-size: 1.8rem;
     font-weight: normal;
 }
-#listing article .item-menu {
+#listing article .item-menu,
+[data-item-page="feeds"] article ul{
     display: flex;
     list-style-type: none;
 }
-#listing article .item-menu li {
+#listing article .item-menu li,
+[data-item-page="feeds"] article li {
     margin-right: 5px;
 }
-#listing article .item-menu li ~ li::before {
+#listing article .item-menu li ~ li::before,
+[data-item-page="feeds"] article li ~ li::before  {
     content: ' - ';
 }
 #listing article .item-menu li:nth-child(2) {
