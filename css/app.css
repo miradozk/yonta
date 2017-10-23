@@ -69,7 +69,6 @@ blockquote {
     margin-bottom: 20px;
     color: #888;
     line-height: 1.4em;
-    font-family: Georgia, serif;
 }
 
 q {
@@ -164,13 +163,13 @@ input[type="number"] {
 }
 select {
     background-color: #fff;
-	padding: 10px 5px;
-	display: inline-block;
-	border: 1px solid #ccc;
-	box-shadow: inset 0 1px 3px #ddd;
-	border-radius: 5px;
-	vertical-align: middle;
-	box-sizing: border-box;
+    padding: 10px 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 5px;
+    vertical-align: middle;
+    box-sizing: border-box;
 }
 textarea {
     border: 1px solid #ccc;
@@ -179,7 +178,6 @@ textarea {
     height: 200px;
     font-size: 99%;
 }
-
 select {
     margin-bottom: 15px;
 }
@@ -251,8 +249,8 @@ textarea.form-error {
 }
 .btn:focus,
 .btn:hover {
-	filter: alpha(opacity=90);
-	background-image: -webkit-linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
+    filter: alpha(opacity=90);
+    background-image: -webkit-linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
     background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
 }
 .btn.btn-blue {
@@ -265,6 +263,16 @@ textarea.form-error {
 }
 .btn.btn-red:hover {
     text-decoration: none
+}
+code,
+pre {
+    background-color: #333;
+    padding: 15px;
+    font-family: monospace;
+    display: block;
+    overflow: hidden;
+    margin: 10px;
+    color: #FFF;
 }
 
  /* = Menu
@@ -404,7 +412,7 @@ header nav a  span {
 ----------------------------------------------------------------------------- */
 #listing article,
 [data-item-page="feeds"] article,
-.page form {
+[data-item-page="config"] section {
     background-color: #FFF;
     border-radius: 5px;
     padding: 5px 10px;
@@ -459,6 +467,23 @@ header nav a  span {
 }
 
 
+
+ /* = Single
+----------------------------------------------------------------------------- */
+[data-item-page="config"]  table {
+    width: 100%;
+    font-size: 1.5rem;
+}
+[data-item-page="config"] table td {
+    text-align: center;
+}
+[data-item-page="config"] a {
+    color: #7F5251;
+}
+[data-item-page="config"] a:hover {
+    text-decoration: underline;
+    color: #ef5350;
+}
 
  /* = Single
 ----------------------------------------------------------------------------- */
@@ -540,6 +565,49 @@ header nav a  span {
 }
 #current-item #item-content p {
     line-height: 1.5;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+#current-item #item-content h1,
+#current-item #item-content h2,
+#current-item #item-content h3,
+#current-item #item-content h4,
+#current-item #item-content h5,
+#current-item #item-content h6 {
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+#current-item #item-content h1 {
+    font-size: 2rem;
+}
+#current-item #item-content h2 {
+    font-size: 1.9rem;
+}
+#current-item #item-content h3 {
+    font-size: 1.8rem;
+}
+#current-item #item-content h4 {
+    font-size: 1.7rem;
+}
+#current-item #item-content h5 {
+    font-size: 1.6rem
+}
+#current-item #item-content h6 {
+    font-size: 1.5rem
+}
+#current-item #item-content ul,
+#current-item #item-content ol,
+.page-section + section ul  {
+    list-style-type: square;
+    margin: 10px 30px;
+}
+#current-item #item-content a {
+    color: #7F5251;
+}
+#current-item #item-content a:hover,
+#current-item #item-content a:focus {
+    color: #ef5350;
+    text-decoration: underline;
 }
 
 
