@@ -99,8 +99,8 @@ a {
 /* = Containers
 ----------------------------------------------------------------------------- */
 
-/*body > header,
-body > .page,*/
+body > header,
+body > .page,
 #miniflux {
     max-width: 960px;
     margin: 0 auto;
