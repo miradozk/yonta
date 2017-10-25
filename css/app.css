@@ -12,7 +12,6 @@
 }
 
 .mi {
-  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'mi' !important;
   speak: none;
   font-style: normal;
@@ -20,8 +19,6 @@
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
-  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -40,6 +37,7 @@
          box-sizing: border-box;
     margin: 0;
     padding: 0;
+    word-wrap: break-word;
 }
 
 html {
@@ -48,17 +46,19 @@ html {
 
 body {
     font-size: 1.6rem;
-    font-family: "Noto Sans","Lato", "Cantarell", sans-serif;
+    /* font-family: "Noto Sans","Lato", "Cantarell", sans-serif; */
     color: #333;
     background-color: #efebe9;
+    font-family: Helvetica, Arial, sans-serif;
 }
 body.fixed {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
+    font-family: Georgia, Times, serif;
 }
 
 blockquote {
@@ -144,6 +144,7 @@ input[type="text"] {
     border: 1px solid #ccc;
     line-height: 1.7
     -webkit-appearance: none;
+    margin-bottom: 10px;
 }
 
 input[type="email"]:focus,
@@ -248,7 +249,9 @@ textarea.form-error {
     cursor: pointer
 }
 .btn:focus,
-.btn:hover {
+.btn:hover,
+[data-item-page="config"]  a[href="?action=new-user"]:focus,
+[data-item-page="config"]  a[href="?action=new-user"]:hover {
     filter: alpha(opacity=90);
     background-image: -webkit-linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
     background-image: linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1));
@@ -274,7 +277,9 @@ pre {
     margin: 10px;
     color: #FFF;
 }
-
+label {
+    margin-bottom: 10px;
+}
  /* = Menu
 ----------------------------------------------------------------------------- */
 #miniflux > header,
@@ -386,6 +391,7 @@ header nav a  span {
     margin: 20px auto;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 .page-header > ul li,
 [data-item-page="feeds"] nav ul li,
@@ -412,6 +418,7 @@ header nav a  span {
 ----------------------------------------------------------------------------- */
 #listing article,
 [data-item-page="feeds"] article,
+[data-item-page="feeds"] form,
 [data-item-page="config"] section {
     background-color: #FFF;
     border-radius: 5px;
@@ -452,6 +459,7 @@ header nav a  span {
 #listing article .item-menu li:nth-child(2) {
     display: none;
 }
+#listing article .item-menu li,
 #listing article .item-menu a,
 #listing article .item-menu span {
     font-size: 1.4rem;
@@ -471,16 +479,38 @@ header nav a  span {
 [data-item-page="config"]  table {
     width: 100%;
     font-size: 1.5rem;
+    border-collapse: collapse
+}
+[data-item-page="config"] table th {
+    background-color: #7F7D7C;
+    color: #FFF;
+    padding: 10px 0;
 }
 [data-item-page="config"] table td {
     text-align: center;
+    padding: 10px 0;
 }
 [data-item-page="config"] a {
-    color: #7F5251;
+    color: #7F2626;
 }
 [data-item-page="config"] a:hover {
     text-decoration: underline;
     color: #ef5350;
+}
+[data-item-page="config"] .options {
+    margin: 15px auto;
+}
+[data-item-page="config"]  label {
+    margin-bottom: 10px;
+}
+[data-item-page="config"]  a[href="?action=new-user"] {
+    display: block;
+    padding: 10px;
+    margin: 20px auto;
+    max-width: 170px;
+    background-color: #ef5350;
+    color: #FFF;
+    text-align: center
 }
 
  /* = Single
@@ -506,6 +536,7 @@ header nav a  span {
 #current-item .item-infos {
     display: flex;
     list-style-type: none;
+    align-items: center;
 }
 #current-item .item-infos li {
     margin-right: 10px;
@@ -560,6 +591,8 @@ header nav a  span {
 }
 #current-item #item-content img {
     max-width: 100%;
+    margin: 15px auto;
+    display: block
 }
 #current-item #item-content p {
     line-height: 1.5;
@@ -626,17 +659,21 @@ header nav a  span {
 }
 .items article h2 a {
     color: #333;
+    font-size: 2rem;
 }
 .items article h2.loading-icon a {
-    color: #9E9E9E;   
+    color: #FFAB00;   
 }
 .items article .items-count {
     font-weight: bold;
 }
+.items article .feed-last-checked {
+    margin-top: 10px;
+}
 .items article .feed-last-checked,
 .items article .feed-parsing-error {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #616161;
 }
 .items article .feed-parsing-error {
@@ -788,6 +825,10 @@ form #grouplist label input:checked + span {
     body > .page {
         margin: 0 5px;
     }
+    body > header {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     header nav a,
     header nav .menu-more-switcher  {
         padding: 10px 5px;
@@ -795,5 +836,11 @@ form #grouplist label input:checked + span {
 
     #listing article .favicon {
         display: none;
+    }
+    [data-item-page="config"] table th:nth-child(2),
+    [data-item-page="config"] table th:nth-child(3),
+    [data-item-page="config"] table td:nth-child(2),
+    [data-item-page="config"] table td:nth-child(3) {
+        display: none
     }
 }
