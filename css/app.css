@@ -855,4 +855,16 @@ form #grouplist label input:checked + span {
     [data-item-page="config"] table td:nth-child(3) {
         display: none
     }
+
+    #current-item .item-infos li {
+        display: none;
+    }
+    #current-item .item-infos li:last-child,
+    #current-item .item-infos li:first-child,
+    #current-item .item-infos li:nth-child(2) {
+        display: inherit !important;
+    }
+    #current-item .item-infos li ~ li::before {
+        margin-right: 5px;
+    }
 }
